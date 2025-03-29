@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tu Plan - Planifica tu despedida con anticipación, desde la tranquilidad de tu casa, sin presiones ni llamadas incómodas.">
+  <meta property="og:title" content="Tu Plan - Tu despedida, a tu manera">
+  <meta property="og:description" content="Planifica tu despedida con anticipación, desde la tranquilidad de tu casa, sin presiones ni llamadas incómodas.">
+  <meta property="og:type" content="website">
+  <title>Tu Plan - Tu despedida, a tu manera</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --background: #f9f9f9;
+      --text-color: #333;
+      --primary-blue: #3498db;
+      --primary-green: #2ecc71;
+      --border-radius: 8px;
+      --spacing: 1.5rem;
+      --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Cabin', sans-serif;
+      background-color: var(--background);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    header {
+      padding: 1.5rem 0;
+      background-color: white;
+      box-shadow: var(--box-shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary-blue);
+    }
+    
+    .hero {
+      padding: 5rem 0;
+      text-align: center;
+      background: linear-gradient(to bottom, #f9f9f9, #ffffff);
+    }
+    
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      color: var(--text-color);
+    }
+    
+    .hero-subtitle {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 0 auto 2.5rem;
+      color: #666;
+    }
+    
+    .hero-cta {
+      margin-top: 2rem;
+    }
+    
+    .section {
+      padding: 5rem 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 2.2rem;
+    }
+    
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing);
+      margin-bottom: 3rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .benefits {
+      background-color: white;
+      border-radius: var(--border-radius);
+      padding: 3rem;
+      box-shadow: var(--box-shadow);
+      margin: 3rem auto;
+      max-width: 900px;
+    }
+    
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .benefit-card {
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      background-color: #f9f9f9;
+      transition: transform 0.3s ease;
+    }
+    
+    .benefit-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .benefit-icon {
+      font-size: 2rem;
+      color: var(--primary-green);
+      margin-bottom: 1rem;
+    }
+    
+    .benefit-title {
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+    
+    .testimonials {
+      background-color: #f0f8ff;
+      padding: 5rem 0;
+    }
+    
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .testimonial-card {
+      background-color: white;
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+    
+    .testimonial-author {
+      font-weight: 700;
+    }
+    
+    .faq {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .faq-item {
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 1.5rem;
+    }
+    
+    .faq-question {
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .faq-answer {
+      display: none;
+      padding-top: 1rem;
+    }
+    
+    .faq-question.active + .faq-answer {
+      display: block;
+    }
+    
+    .cta-section {
+      background-color: var(--primary-blue);
+      color: white;
+      text-align: center;
+      padding: 5rem 0;
+    }
+    
+    .cta-title {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .cta-text {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+    }
+    
+    .cta-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: var(--border-radius);
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary-blue);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background-color: #2980b9;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-secondary {
+      background-color: white;
+      color: var(--primary-blue);
+    }
+    
+    .btn-secondary:hover {
+      background-color: #f5f5f5;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-whatsapp {
+      background-color: var(--primary-green);
+      color: white;
+    }
+    
+    .btn-whatsapp:hover {
+      background-color: #27ae60;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .modal-content {
+      background-color: white;
+      padding: 2.5rem;
+      border-radius: var(--border-radius);
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      animation: modalFadeIn 0.3s ease;
+    }
+    
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .close {
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    
+    .close:hover {
+      color: var(--primary-blue);
+    }
+    
+    .tabs {
+      display: flex;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .tab {
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .tab:hover {
+      color: var(--primary-blue);
+    }
+    
+    .tab.active {
+      border-bottom: 2px solid var(--primary-blue);
+      font-weight: 700;
+      color: var(--primary-blue);
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius);
+      font-family: 'Cabin', sans-serif;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+    
+    input:focus {
+      outline: none;
+      border-color: var(--primary-blue);
+    }
+    
+    .submit-btn {
+      width: 100%;
+    }
+    
+    .form-message {
+      padding: 1rem;
+      border-radius: var(--border-radius);
+      margin-top: 1rem;
+      display: none;
+    }
+    
+    .form-message.success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    
+    .form-message.error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 3rem 0;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+    
+    .footer-column h3 {
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+    }
+    
+    .footer-column ul {
+      list-style: none;
+    }
+    
+    .footer-column ul li {
+      margin-bottom: 0.75rem;
+    }
+    
+    .footer-column ul li a {
+      color: #ddd;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-column ul li a:hover {
+      color: white;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: var(--primary-blue);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid #444;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .cta-title {
+        font-size: 2rem;
+      }
+      
+      .cta-container {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+      
+      .benefits {
+        padding: 2rem;
+      }
+      
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .logo {
+        margin-bottom: 1rem;
+      }
+    }
+    
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">Tu Plan</div>
+        <nav>
+          <a href="#beneficios" class="btn btn-secondary">Beneficios</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+  <section class="hero">
+    <div class="container">
+      <h1 class="fade-in">Tu despedida, a tu manera</h1>
+      <p class="hero-subtitle fade-in">Planifica con anticipación, desde la tranquilidad de tu casa, sin presiones ni llamadas incómodas.</p>
+      <div class="hero-cta fade-in">
+        <button class="btn btn-primary" id="notifyBtn">
+          Quiero que me avisen cuando esté disponible
+        </button>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section">
+    <div class="container">
+      <div class="content fade-in">
+        <p>Sabemos que nadie quiere hablar del día que nos toque partir, pero también sabemos que muchos prefieren dejar todo resuelto.</p>
+        <p>Con nuestra plataforma podés planificar tu despedida con anticipación, desde la tranquilidad de tu casa, sin presiones ni llamadas incómodas.</p>
+        <p>Te damos el control para decidir cómo querés que te recuerden, con opciones simples, claras y humanas.</p>
+        <p>Además, acompañamos a tu familia cuando más lo necesita: trámites y documentación, asesoría legal y apoyo psicológico.</p>
+        <p>Lo más importante: muchas personas ni siquiera saben qué tienen contratado, o si están realmente cubiertas. Por eso, este servicio también te da claridad sobre tu situación actual, para que tomes decisiones con información y tranquilidad.</p>
+        <p>Esto no se trata de morir. Se trata de vivir tranquilo sabiendo que cuidás a los tuyos, incluso cuando ya no estés.</p>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section" id="beneficios">
+    <div class="container">
+      <h2 class="section-title fade-in">Beneficios</h2>
+      <div class="benefits fade-in">
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <i class="fas fa-globe"></i>
+            </div>
+            <h3 class="benefit-title">Todo 100% online</h3>
+            <p>Gestiona todo desde la comodidad de tu hogar, sin necesidad de desplazamientos ni papeleos.</p>
+          </div>
+          
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3 class="benefit-title">Sin sorpresas ni sobrecostos</h3>
+            <p>Precios transparentes y claros desde el principio, sin cargos ocultos ni sorpresas.</p>
+          </div>
+          
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <i class="fas fa-building"></i>
+            </div>
+            <h3 class="benefit-title">Con respaldo de las funerarias más importantes</h3>
+            <p>Trabajamos con las mejores funerarias del país para garantizar un servicio de calidad.</p>
+          </div>
+          
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <i class="fas fa-leaf"></i>
+            </div>
+            <h3 class="benefit-title">Opciones ecológicas</h3>
+            <p>Ofrecemos alternativas respetuosas con el medio ambiente para quienes lo prefieran.</p>
+          </div>
+          
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <i class="fas fa-paw"></i>
+            </div>
+            <h3 class="benefit-title">No nos olvidamos de las mascotas</h3>
+            <p>También incluimos opciones para asegurar el bienestar de tus compañeros de vida.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section testimonials">
+    <div class="container">
+      <h2 class="section-title fade-in">Lo que dicen nuestros usuarios</h2>
+      <div class="testimonial-grid fade-in">
+        <div class="testimonial-card">
+          <p class="testimonial-text">"Nunca pensé que planificar algo así podría ser tan sencillo y reconfortante. Me ha dado una tranquilidad que no esperaba."</p>
+          <p class="testimonial-author">- María L.</p>
+        </div>
+        
+        <div class="testimonial-card">
+          <p class="testimonial-text">"Después de la experiencia que tuvimos con mi padre, decidí que no quería que mis hijos pasaran por lo mismo. Tu Plan me dio la solución perfecta."</p>
+          <p class="testimonial-author">- Carlos G.</p>
+        </div>
+        
+        <div class="testimonial-card">
+          <p class="testimonial-text">"La claridad y transparencia del servicio es lo que más valoro. Por fin entiendo exactamente qué tengo contratado y qué puedo esperar."</p>
+          <p class="testimonial-author">- Ana P.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title fade-in">Preguntas frecuentes</h2>
+      <div class="faq fade-in">
+        <div class="faq-item">
+          <div class="faq-question">
+            ¿Por qué debería planificar mi despedida con anticipación?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Planificar con anticipación te permite tomar decisiones con calma, asegurarte de que tus deseos sean respetados y evitar que tus seres queridos tengan que tomar decisiones difíciles en momentos de dolor. Además, te da la tranquilidad de saber que todo está resuelto.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            ¿Cómo funciona exactamente el servicio?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Nuestro servicio te permite crear un plan personalizado a través de nuestra plataforma online. Podrás especificar tus preferencias, elegir entre diferentes opciones y dejar instrucciones claras. Todo queda registrado y tus seres queridos tendrán acceso a esta información cuando sea necesario.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            ¿Puedo modificar mi plan en el futuro?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Sí, puedes modificar tu plan en cualquier momento. Entendemos que las preferencias y circunstancias pueden cambiar, por lo que nuestra plataforma te permite actualizar tu información cuando lo necesites.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">
+            ¿Qué pasa con mis mascotas?
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            <p>Ofrecemos opciones específicas para asegurar el bienestar de tus mascotas. Puedes dejar instrucciones sobre quién se hará cargo de ellas, así como preferencias sobre su cuidado y necesidades especiales.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="cta-title fade-in">Prepárate para el futuro con tranquilidad</h2>
+      <p class="cta-text fade-in">Deja todo resuelto y brinda a tus seres queridos la tranquilidad que merecen en momentos difíciles.</p>
+      <div class="cta-container fade-in">
+        <button class="btn btn-secondary" id="notifyBtnFooter">
+          Quiero que me avisen cuando esté disponible
+        </button>
+        <a href="https://wa.me/59899382548" class="btn btn-whatsapp">
+          <i class="fab fa-whatsapp"></i> Quiero hablar con un operador
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Tu Plan</h3>
+          <p>Planifica tu despedida con anticipación, desde la tranquilidad de tu casa.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Enlaces</h3>
+          <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#beneficios">Beneficios</a></li>
+            <li><a href="#">Sobre nosotros</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="#">Términos y condiciones</a></li>
+            <li><a href="#">Política de privacidad</a></li>
+            <li><a href="#">Aviso legal</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>&copy; 2025 Tu Plan. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <div class="modal" id="notifyModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>¿Cómo querés que te avisemos?</h2>
+        <span class="close">&times;</span>
+      </div>
+      <div class="tabs">
+        <div class="tab active" data-tab="email">Vía Email</div>
+        <div class="tab" data-tab="whatsapp">Vía WhatsApp</div>
+      </div>
+      <div class="tab-content active" id="email-tab">
+        <form id="email-form">
+          <div class="form-group">
+            <label for="email">Tu correo electrónico</label>
+            <input type="email" id="email" required placeholder="ejemplo@correo.com">
+          </div>
+          <button type="submit" class="btn btn-primary submit-btn">Enviar</button>
+          <div class="form-message" id="email-message"></div>
+        </form>
+      </div>
+      <div class="tab-content" id="whatsapp-tab">
+        <form id="whatsapp-form">
+          <div class="form-group">
+            <label for="phone">Tu número de WhatsApp</label>
+            <input type="tel" id="phone" required placeholder="Ej: 099123456">
+          </div>
+          <button type="submit" class="btn btn-primary submit-btn">Enviar</button>
+          <div class="form-message" id="whatsapp-message"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Modal functionality
+    const modal = document.getElementById('notifyModal');
+    const notifyBtn = document.getElementById('notifyBtn');
+    const notifyBtnFooter = document.getElementById('notifyBtnFooter');
+    const closeBtn = document.querySelector('.close');
+    
+    function openModal() {
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+    }
+    
+    function closeModal() {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto'; // Re-enable scrolling
+    }
+    
+    notifyBtn.addEventListener('click', openModal);
+    notifyBtnFooter.addEventListener('click', openModal);
+    
+    closeBtn.addEventListener('click', closeModal);
+    
+    window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+    
+    // Tab functionality
+    const tabs = document.querySelectorAll('.tab');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const tabId = tab.getAttribute('data-tab');
+        
+        // Remove active class from all tabs and contents
+        tabs.forEach(t => t.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+        
+        // Add active class to current tab and content
+        tab.classList.add('active');
+        document.getElementById(`${tabId}-tab`).classList.add('active');
+      });
+    });
+    
+    // Form validation and submission
+    const emailForm = document.getElementById('email-form');
+    const whatsappForm = document.getElementById('whatsapp-form');
+    const emailMessage = document.getElementById('email-message');
+    const whatsappMessage = document.getElementById('whatsapp-message');
+    
+    function validateEmail(email) {
+      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    }
+    
+    function validatePhone(phone) {
+      // Simple validation for demonstration purposes
+      return phone.length >= 8;
+    }
+    
+    function showMessage(element, message, type) {
+      element.textContent = message;
+      element.className = `form-message ${type}`;
+      element.  {
+      element.textContent = message;
+      element.className = `form-message ${type}`;
+      element.style.display = 'block';
+      
+      // Hide message after 5 seconds
+      setTimeout(() => {
+        element.style.display = 'none';
+      }, 5000);
+    }
+    
+    emailForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      
+      if (!validateEmail(email)) {
+        showMessage(emailMessage, 'Por favor, ingresa un correo electrónico válido.', 'error');
+        return;
+      }
+      
+      // Here you would typically send the data to a server
+      // For demonstration, we'll just show a success message
+      showMessage(emailMessage, `¡Gracias! Te avisaremos al correo ${email} cuando el servicio esté disponible.`, 'success');
+      setTimeout(() => {
+        closeModal();
+        emailForm.reset();
+      }, 3000);
+    });
+    
+    whatsappForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const phone = document.getElementById('phone').value;
+      
+      if (!validatePhone(phone)) {
+        showMessage(whatsappMessage, 'Por favor, ingresa un número de teléfono válido.', 'error');
+        return;
+      }
+      
+      // Here you would typically send the data to a server
+      // For demonstration, we'll just show a success message
+      showMessage(whatsappMessage, `¡Gracias! Te avisaremos al número ${phone} cuando el servicio esté disponible.`, 'success');
+      setTimeout(() => {
+        closeModal();
+        whatsappForm.reset();
+      }, 3000);
+    });
+    
+    // FAQ accordion functionality
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        // Toggle active class on the clicked question
+        question.classList.toggle('active');
+        
+        // Toggle the icon
+        const icon = question.querySelector('i');
+        if (question.classList.contains('active')) {
+          icon.className = 'fas fa-chevron-up';
+        } else {
+          icon.className = 'fas fa-chevron-down';
+        }
+      });
+    });
+    
+    // Scroll animations
+    function checkFadeElements() {
+      const fadeElements = document.querySelectorAll('.fade-in');
+      
+      fadeElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight - 100) {
+          element.classList.add('visible');
+        }
+      });
+    }
+    
+    // Check elements on page load
+    window.addEventListener('load', checkFadeElements);
+    
+    // Check elements on scroll
+    window.addEventListener('scroll', checkFadeElements);
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80, // Offset for header
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+
